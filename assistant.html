@@ -60,7 +60,9 @@ mark{background:none;color:var(--gold)}
 .man table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14px}
 .man th{text-align:left;color:#d9a84e;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(237,231,218,.18);font-size:12.5px;letter-spacing:.06em}
 .man td{padding:11px 12px;border-bottom:1px solid rgba(237,231,218,.08);color:#a9a192;vertical-align:top}
-.man td:first-child{color:#ede7da;white-space:nowrap}
+.man td:first-child{color:#ede7da;white-space:nowrap;padding-right:28px;width:1%}
+.man table{table-layout:auto}
+@media(max-width:620px){.man td:first-child{white-space:normal;padding-right:12px}}
 .man .box{background:rgba(237,231,218,.035);border:1px solid rgba(237,231,218,.1);border-radius:13px;padding:20px 24px;margin:18px 0}
 .man .box b{color:#d9a84e}
 .man code{background:rgba(237,231,218,.07);padding:2px 7px;border-radius:5px;font-size:13px;color:#cfc8b8}

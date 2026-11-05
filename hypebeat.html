@@ -50,7 +50,25 @@ mark{background:none;color:var(--gold)}
 .item h3{font-size:16px}
 .aigrid{grid-template-columns:repeat(2,1fr)}
 }
-</style></head><body>
+</style><style>
+.man h2{font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(20px,2.6vw,26px);margin:52px 0 16px;line-height:1.45}
+.man h3{font-size:17px;font-weight:700;margin:28px 0 10px;color:#ede7da}
+.man p{color:#a9a192;font-size:14.5px;margin-bottom:12px}
+.man ul{list-style:none;margin:10px 0 18px}
+.man li{color:#a9a192;font-size:14.5px;padding-left:16px;position:relative;margin-bottom:7px;line-height:1.75}
+.man li::before{content:"·";position:absolute;left:0;color:#d9a84e;font-weight:700}
+.man table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:14px}
+.man th{text-align:left;color:#d9a84e;font-weight:700;padding:10px 12px;border-bottom:1px solid rgba(237,231,218,.18);font-size:12.5px;letter-spacing:.06em}
+.man td{padding:11px 12px;border-bottom:1px solid rgba(237,231,218,.08);color:#a9a192;vertical-align:top}
+.man td:first-child{color:#ede7da;white-space:nowrap;padding-right:28px;width:1%}
+.man table{table-layout:auto}
+@media(max-width:620px){.man td:first-child{white-space:normal;padding-right:12px}}
+.man .box{background:rgba(237,231,218,.035);border:1px solid rgba(237,231,218,.1);border-radius:13px;padding:20px 24px;margin:18px 0}
+.man .box b{color:#d9a84e}
+.man code{background:rgba(237,231,218,.07);padding:2px 7px;border-radius:5px;font-size:13px;color:#cfc8b8}
+.man .note{font-size:13px;color:#7d766b;border-left:2px solid rgba(217,168,78,.4);padding-left:14px;margin:16px 0}
+</style>
+</head><body>
 <nav><b>PARK JONG HUN</b><span><a href="./">← 메인으로</a><button id="bgmbtn" aria-label="배경음악"><svg class="ip" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3.5 1.8v12.4l10-6.2z"/></svg><svg class="iq" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect class="q1" x="1.4" y="4.5" width="2.4" height="7" rx="1.2"/><rect class="q2" x="6.8" y="2.5" width="2.4" height="11" rx="1.2"/><rect class="q3" x="12.2" y="5.5" width="2.4" height="5" rx="1.2"/></svg></button></span></nav>
 <div class="wrap man">
   <div class="label">MANUAL — HYPEBEAT v28</div>
