@@ -51,7 +51,7 @@ mark{background:none;color:var(--gold)}
 .aigrid{grid-template-columns:repeat(2,1fr)}
 }
 </style></head><body>
-<nav><b>PARK JONG HUN</b><span><a href="./">← 메인으로</a></span></nav>
+<nav><b>PARK JONG HUN</b><span><a href="./">← 메인으로</a><button id="bgmbtn" aria-label="배경음악"><svg class="ip" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3.5 1.8v12.4l10-6.2z"/></svg><svg class="iq" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect class="q1" x="1.4" y="4.5" width="2.4" height="7" rx="1.2"/><rect class="q2" x="6.8" y="2.5" width="2.4" height="11" rx="1.2"/><rect class="q3" x="12.2" y="5.5" width="2.4" height="5" rx="1.2"/></svg></button></span></nav>
 <div class="wrap man">
   <div class="label">MANUAL — HYPEBEAT v28</div>
   <h1>작곡 자동화 앱<br>HYPEBEAT 사용 설명서</h1>
@@ -139,4 +139,33 @@ mark{background:none;color:var(--gold)}
 
   <p class="note">박종훈 · v28 · 2026-11-05 기준. 이 문서는 포트폴리오의 일부입니다.</p>
 </div>
+<audio id="bgma" src="bgm.mp3" loop preload="auto"></audio>
+<script>
+const bgmBtn=document.getElementById("bgmbtn"),bgma=document.getElementById("bgma");
+bgma.volume=0.6;
+let bgmWant=sessionStorage.getItem("bgmOn")!=="0";
+function bgmSeek(){try{const t=parseFloat(sessionStorage.getItem("bgmT"));if(t>0&&isFinite(t)&&Math.abs(bgma.currentTime-t)>1)bgma.currentTime=t;}catch(e){}}
+bgma.addEventListener("loadedmetadata",bgmSeek);bgmSeek();
+function bgmUi(){bgmBtn.classList.toggle("playing",!bgma.paused);}
+bgma.addEventListener("play",bgmUi);bgma.addEventListener("pause",bgmUi);
+function bgmSave(){try{sessionStorage.setItem("bgmT",bgma.currentTime);sessionStorage.setItem("bgmOn",bgmWant?"1":"0");}catch(e){}}
+setInterval(bgmSave,3000);addEventListener("pagehide",bgmSave);
+bgmBtn.addEventListener("click",e=>{e.stopPropagation();if(bgma.paused){bgmWant=true;bgma.play().catch(()=>{});}else{bgmWant=false;bgma.pause();}bgmSave();});
+if(bgmWant&&window.top===window)bgma.play().catch(()=>{});
+if(window.top===window)document.addEventListener("pointerdown",e=>{if(e.target&&e.target.closest&&e.target.closest("#bgmbtn"))return;if(bgmWant&&bgma.paused)bgma.play().catch(()=>{});});
+let swx=null,swy=null;
+addEventListener("touchstart",e=>{swx=e.touches[0].clientX;swy=e.touches[0].clientY;},{passive:true});
+addEventListener("touchend",e=>{if(swx===null)return;const dx=e.changedTouches[0].clientX-swx,dy=e.changedTouches[0].clientY-swy;
+if(Math.abs(dx)>80&&Math.abs(dy)<60){if(window.top!==window)parent.postMessage("closeOvl","*");else location.href="./";}swx=null;},{passive:true});
+
+// 임베드(메인 오버레이) 모드: 자체 음악 끔, 돌아가기는 패널 닫기
+if(window.top!==window){
+  try{bgma.remove();}catch(e){}
+  if(bgmBtn) bgmBtn.style.display="none";
+  const back=document.querySelector('nav a[href="./"]');
+  if(back) back.addEventListener("click",e=>{e.preventDefault();parent.postMessage("closeOvl","*");});
+  addEventListener("touchend",e=>{},true);
+}
+</script>
+
 </body></html>
