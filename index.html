@@ -46,8 +46,9 @@ nav .mlinks a:hover{color:var(--gold)}
 /* 1 히어로 */
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:11vh;position:relative;overflow:hidden}
 #wavecv{position:absolute;left:0;right:0;top:24%;width:100%;height:160px;pointer-events:none;opacity:.5;z-index:1}
-#hero h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(34px,5.4vw,76px);line-height:1.26;letter-spacing:.01em;text-shadow:0 2px 28px rgba(0,0,0,.6);max-width:10em}
+#hero h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:clamp(28px,4.2vw,58px);line-height:1.3;letter-spacing:.005em;text-shadow:0 2px 28px rgba(0,0,0,.6);max-width:13.6em;white-space:nowrap}
 #hero h1 em{font-style:normal;color:var(--gold)}
+@media(max-width:760px){#hero h1{white-space:normal;max-width:100%}}
 #hero .roles{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-size:13px;letter-spacing:.2em;color:var(--mut)}
 #hero .roles b{color:var(--ink);font-weight:500}
 #hero .intro{margin-top:24px;max-width:470px;color:#c6bdae;font-size:15.5px;word-break:keep-all}
